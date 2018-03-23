@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="{$url_base}public/css/samane.css"/>
+        <title>Ajout de discipline</title>
+    </head>
+    <body>
+        <div class="nav navbar navbar-default navbar-fixed-top">
+            <ul class="nav navbar-nav">
+                <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+                <li><a href="{$url_base}Discipline/add">Ajout de Discipliner</a></li>
+                <li><a href="{$url_base}Discipline/liste">Liste des disciplines</a></li>
+                <li><a href="{$url_base}Joueur/add">Ajout de Joueur</a></li>
+                <li><a href="{$url_base}Joueur/liste">Liste des Joueurs/Entraineur</a></li>
+
+            </ul>
+        </div>
+        <div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top: 75px">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Formulaire d'ajout de discipline
+                </div>
+                <div class="panel-body">
+                    {if isset($ok)}
+                        {if $ok != 0}
+                            <div class="alert alert-success">Données ajoutées!</div>
+                        {else}
+                            <div class="alert alert-danger">Erreur!</div>
+                        {/if}
+                    {/if}
+                    <form method="post" action="{$url_base}discipline/add">
+                        <div class="form-group">
+                            <label class="control-label">Libelle</label>
+                            <input class="form-control" type="text" name="libD" id="libD" placeholder="Veuillez entrer le libelle du discipline"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" name="envoyer" id="envoyer" value="Envoyer"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

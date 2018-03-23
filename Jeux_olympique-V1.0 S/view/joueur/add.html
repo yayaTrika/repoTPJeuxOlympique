@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <link type="text/css" rel="stylesheet" href="{$url_base}public/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="{$url_base}public/css/samane.css"/>
+        <title>Ajout de Joueur</title>
+    </head>
+    <body>
+        <div class="nav navbar navbar-default navbar-fixed-top">
+            <ul class="nav navbar-nav">
+                <!-- l'appel de {$url_base} vous permet de recupérer le chemin de votre site web  -->
+                <li><a href="{$url_base}Discipline/add">Ajout de Discipliner</a></li>
+                <li><a href="{$url_base}Discipline/liste">Liste des disciplines</a></li>
+                <li><a href="{$url_base}Joueur/add">Ajout de Joueur</a></li>
+                <li><a href="{$url_base}Joueur/liste">Liste des Joueurs/Entraineur</a></li>
+
+            </ul>
+        </div>
+        <div class="col-md-8 col-xs-12 col-md-offset-2" style="margin-top:150px;">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Ajout de joueur
+                </div>
+                <div class="panel-body">
+                    <form method="post" action="{$url_base}Joueur/add">
+                        <div class="form-group">
+                            <label class="control-label">Nom</label>
+                            <input class="form-control" type="text" name="nom" id="nom" placeholder="Veuillez entrer le nom"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Prenom</label>
+                            <input class="form-control" type="text" name="prenom" id="prenom" placeholder="Veuillez entrer le prenom "/>
+                        </div>
+                        <div class="form-group">
+                         <!--   <label class="control-label">Entraineur ou Joueur</label>-->
+                         <!--   <input class="form-control" type="text" name="idEntraineur" id="idEntraineur" placeholder="Veuillez laisser le champ vide, si c'est un entraineur"/>-->
+                            <label class="control-label">Joueur    </label> <input type="radio" name="type" value="joueur" checked /><br>
+                            <label class="control-label">Entraineur</label> <input type="radio" name="type" value="entraineur"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Discipline</label>
+                            {if isset($liste)}
+
+                                <select class="form-control" name="idD">
+                                    <option>Faite votre choix</option>
+                                    {if $liste != null}
+                                        {foreach from = $liste item =discipline}
+
+                                            <option  value="{$discipline['idD']}">{$discipline['libD']}</option>
+
+                                        {/foreach}
+                                    {/if}
+                                </select>
+
+                            {/if}
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" name="ajouter" id="ajouter" value="Ajouter"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
